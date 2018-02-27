@@ -24,9 +24,9 @@ N(q)=1，即q−1=q∗。右边表达式包含了四元数乘法。相关的定�
   下面贴上代码（unityc#版本）:<br>
   自定义四元数类:<br>
   
-`` `（c#)<br>
+```（c#)<br>
 
-using System.Collections;
+`using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class MQuaternions
@@ -113,9 +113,9 @@ public class MQuaternions
         _nz = _z / divisor;
         _nw = _w;
     }
-}
+}`<br>
 
-` `` <br>
+``` <br>
 
 测试类：<br>
 ```c#
