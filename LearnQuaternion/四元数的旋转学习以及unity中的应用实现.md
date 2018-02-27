@@ -126,7 +126,6 @@ public class test : MonoBehaviour {
     public float angle;
 
     void Start () {
-       // resetPostion = transform.position;
         
     }
     void Update () {
