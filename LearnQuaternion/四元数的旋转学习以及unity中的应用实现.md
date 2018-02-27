@@ -23,7 +23,7 @@ N(q)=1，即q−1=q∗。右边表达式包含了四元数乘法。相关的定�
   p'的计算过程根据上方的四元数运算公式可进行过程计算（其中涉及的向量点积叉积运算此处不再赘述）<br>
   下面贴上代码（unityc#版本）:<br>
   自定义四元数类:<br>
-  ```c#
+```c#
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -112,7 +112,7 @@ public class MQuaternions
         _nw = _w;
     }
 }
-``` <br>
+```
 测试类：<br>
 ```c#
 using System.Collections;
@@ -158,7 +158,7 @@ public class test : MonoBehaviour {
         }
     }
 }
-```<br>
+```
 使用方法将test类挂在需要旋转的球体上，另一个球体位置代表旋转轴，如下图所示：<br>
 ![](https://github.com/bunny1721/LearnNote/blob/master/LearnQuaternion/res/Image2.png)<br>
 
