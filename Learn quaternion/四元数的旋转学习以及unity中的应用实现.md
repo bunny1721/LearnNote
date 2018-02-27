@@ -159,9 +159,8 @@ public class test : MonoBehaviour {
     }
 }
 ```<br>
-
 使用方法将test类挂在需要旋转的球体上，另一个球体位置代表旋转轴，如下图所示：<br>
-![](https://github.com/bunny1721/LearnNote/blob/master/Learn%20quaternion/res/Image2.png)
+![](https://github.com/bunny1721/LearnNote/blob/master/Learn%20quaternion/res/Image2.png)<br>
 
 好了上面就是关于四元数旋转的计算过程的实现，另有c++版本代码 在此项目目录下。
 
