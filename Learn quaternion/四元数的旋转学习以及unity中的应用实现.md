@@ -20,5 +20,94 @@ N(q)=1，即q−1=q∗。右边表达式包含了四元数乘法。相关的定�
   ● 共轭四元数：q∗=(−v⃗ ,w)<br>
   ● 四元数的模：N(q) = √(x^2 + y^2 + z^2 +w^2)，即四元数到原点的距离<br>
   ● 四元数的逆：q−1=q∗N(q)<br>
+  p'的计算过程根据上方的四元数运算公式可进行过程计算（其中涉及的向量点积叉积运算此处不再赘述）<br>
+  下面贴上代码（c#版本）:<br>
+  ```c#
+public class MQuaternions
+{
+
+    public float _x;
+    public float _y;
+    public float _z;
+    public float _w;
+    public float _nx;
+    public float _ny;
+    public float _nz;
+    public float _nw;
+
+    MQuaternions()
+    {
+
+    }
+    public MQuaternions(float x, float y, float z, float w)
+    {
+
+        _x = x;
+	    _y = y;
+	    _z = z;
+	    _w = w;
+
+        unitary();
+    }
+    public MQuaternions AxisRotation(MQuaternions _axis, float _angle)
+    {
+        MQuaternions result = new MQuaternions();
+        MQuaternions q = new MQuaternions();
+        MQuaternions p = new MQuaternions();
+        MQuaternions qN = new MQuaternions();
+        float radian = (_angle * 3.1415926f) / 180.0f;
+        q._x = _axis._nx * Mathf.Sin(radian);
+        q._y = _axis._ny * Mathf.Sin(radian);
+        q._z = _axis._nz * Mathf.Sin(radian);
+        q._w = Mathf.Cos(radian);
+
+        qN._x = -q._x;
+        qN._y = -q._y;
+        qN._z = -q._z;
+        qN._w = q._w;
+
+        p._x = _x;
+        p._y = _y;
+        p._z = _z;
+        p._w = _w;
+
+        result = q.Ride(p).Ride(qN);
+        return result;
+
+    }
+    public MQuaternions Ride(MQuaternions _target)
+    {
+        float x1 = _y * _target._z - _z * _target._y;
+        float y1 = _z * _target._x - _x * _target._z;
+        float z1 = _x * _target._y - _y * _target._x;
+
+        float x2 = _w * _target._x;
+        float y2 = _w * _target._y;
+        float z2 = _w * _target._z;
+
+        float x3 = _target._w * _x;
+        float y3 = _target._w * _y;
+        float z3 = _target._w * _z;
+
+        float w1 = _w * _target._w;
+        float w2 = _x * _target._x + _y * _target._y + _z * _target._z;
+
+        MQuaternions _result = new MQuaternions();
+        _result._x = x1 + x2 + x3;
+        _result._y = y1 + y2 + y3;
+        _result._z = z1 + z2 + z3;
+        _result._w = w1 - w2;
+        return _result;
+    }
+    public void unitary()
+    {
+        float divisor = Mathf.Sqrt(_x * _x + _y * _y + _z * _z);
+        _nx = _x / divisor;
+        _ny = _y / divisor;
+        _nz = _z / divisor;
+        _nw = _w;
+    }
+}
+```
   
 
