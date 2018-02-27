@@ -125,15 +125,10 @@ public class test : MonoBehaviour {
     public GameObject aix;
     public float angle;
 
-   // Vector3 resetPostion = new Vector3();
-    //Vector3 disVec;
-    // Use this for initialization
     void Start () {
        // resetPostion = transform.position;
         
     }
-
-    // Update is called once per frame
     void Update () {
        MQuaternions q1 = new MQuaternions(transform.position.x, transform.position.y, transform.position.z, 0);
        MQuaternions q2 = new MQuaternions(aix.transform.position.x, aix.transform.position.y, aix.transform.position.z, 0);
