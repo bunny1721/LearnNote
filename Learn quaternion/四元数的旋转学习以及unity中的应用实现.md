@@ -1,7 +1,7 @@
 
 四元数的学习以及unity中的应用实现
 =============================
->>最近在学习OpenGL空间变换时，学习使用了欧拉角旋转，后经过各方面的资料学习发现，欧拉角存在万向节锁问题（关于此问题再次不予讨论）。使用四元数可以解决万向节锁问题，在学习四元数的过程中有不少心得体会在此做下笔记并且与大家进行分享交流。<br>
+>>最近在学习OpenGL空间变换时，学习使用了欧拉角旋转，后经过各方面的资料学习发现，欧拉角存在万向节锁问题（关于此问题再次不予讨论）。使用四元数可以解决万向节锁问题，在学习四元数的过程中有不少心得体会在此做下笔记并且与大家进行分享交流。 (本文仅讨论四元数旋转的计算过程，所以使用unity引擎作为辅助运算展示的引擎，不使用OpenGL原生代码，以免给大家造成不必要的困扰)<br>
   
 四元数简介
 --------
@@ -21,8 +21,12 @@ N(q)=1，即q−1=q∗。右边表达式包含了四元数乘法。相关的定�
   ● 四元数的模：N(q) = √(x^2 + y^2 + z^2 +w^2)，即四元数到原点的距离<br>
   ● 四元数的逆：q−1=q∗N(q)<br>
   p'的计算过程根据上方的四元数运算公式可进行过程计算（其中涉及的向量点积叉积运算此处不再赘述）<br>
-  下面贴上代码（c#版本）:<br>
+  下面贴上代码（unityc#版本）:<br>
+  自定义四元数类:<br>
   ```c#
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 public class MQuaternions
 {
 
@@ -43,9 +47,9 @@ public class MQuaternions
     {
 
         _x = x;
-	    _y = y;
-	    _z = z;
-	    _w = w;
+	_y = y;
+	_z = z;
+	_w = w;
 
         unitary();
     }
@@ -108,6 +112,56 @@ public class MQuaternions
         _nw = _w;
     }
 }
-```
-  
+``` <br>
+测试类：<br>
+```c#
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class test : MonoBehaviour {
+
+    public GameObject aix;
+    public float angle;
+
+   // Vector3 resetPostion = new Vector3();
+    //Vector3 disVec;
+    // Use this for initialization
+    void Start () {
+       // resetPostion = transform.position;
+        
+    }
+
+    // Update is called once per frame
+    void Update () {
+       MQuaternions q1 = new MQuaternions(transform.position.x, transform.position.y, transform.position.z, 0);
+       MQuaternions q2 = new MQuaternions(aix.transform.position.x, aix.transform.position.y, aix.transform.position.z, 0);
+       MQuaternions result = q1.AxisRotation(q2, angle);
+       transform.position = new Vector3(result._x, result._y, result._z);
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            aix.transform.position += new Vector3(0, 0.1f, 0);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            aix.transform.position += new Vector3(0, -0.1f, 0);
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            aix.transform.position += new Vector3(-0.1f, 0, 0);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            aix.transform.position += new Vector3(0.1f, 0, 0);
+        }
+    }
+}
+```<br>
+
+使用方法将test类挂在需要旋转的球体上，另一个球体位置代表旋转轴，如下图所示：<br>
+![](https://github.com/bunny1721/LearnNote/blob/master/Learn%20quaternion/res/Image2.png)
+
+好了上面就是关于四元数旋转的计算过程的实现，另有c++版本代码 在此项目目录下。
 
