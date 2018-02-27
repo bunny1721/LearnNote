@@ -10,7 +10,8 @@
 四元数基础
 ---------
 >>一个四元数可以表示为q = w + xi + yj + zk，大家可能会有疑问，四元数在三维旋转中是如何结合使用的呢，在此大家可以简单的理解为四元数q = （(x,y,z),w)，其中（x, y ,z）即三维向量，w是实数。<br>
-在三维空间旋转中，四元数可以理解为点（x,y,z）绕旋转轴Rotation axis (四元数表示的旋转轴（u\*sin(angle/2) , cos(angle/2) ,其中u是单位向量 angle是旋转角度)旋转一定角度。<br>
+在三维空间旋转中，四元数可以理解为点（x,y,z）绕旋转轴Rotation axis <br>(四元数表示的旋转轴（u\*sin(angle/2) , cos(angle/2) ,其中u是单位向量 angle是旋转角度)旋转一定角度。<br>
+![](https://github.com/bunny1721/LearnNote/blob/master/Learn%20quaternion/res/image1.png)<br>
 在上面提到四元数q = （(x,y,z)sin(θ/2), cos(θ/2)）来执行一个旋转，点P为要旋转的点绕四元数所表示的旋转轴q来进行旋转，首先我们需要把P拓展为四元数p=(P,0)。计算后得到的新的四元数p' = (P',0)。那么，旋转后新的点对应的四元数（当然这个计算而得的四元数的实部为0，虚部系数就是新的坐标）为：<br> p′=qpq−1 <br>
 其中：<br>
 q=(cosθ2, (x,y,z)sinθ2) ，q−1=q∗N(q)，由于u是单位向量，因此<br>
