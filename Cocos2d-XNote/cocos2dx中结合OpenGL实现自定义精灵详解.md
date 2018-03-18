@@ -9,6 +9,7 @@ cocos中已经自定义很多种类的着色器代码段为了简便使用cocos�
 setGLProgram(ShaderCache::getInstance()->getGLProgram(GLProgram::SHADER_NAME_POSITION_TEXTURE));
 ```
 GLProgram::SHADER_NAME_POSITION_TEXTURE是创建shader 里面包含Position以及Texture的属性<br>
+
 设置自定义顶点纹理坐标
 -----------
 ```c++
