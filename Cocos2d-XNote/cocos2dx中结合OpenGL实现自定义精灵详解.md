@@ -51,7 +51,7 @@ m_vertices = new float[9]
 	glBindVertexArray(0);
   ```
   在上述代码中可以看到setUniformsForBuiltins(transform);这是cocos设置MVP变换<br>
-  MVP即模型、视图和投影变换处理后可最终显示到游戏窗空中（有兴趣的童鞋可以查阅相关文档资料）<br>
+  MVP即模型、视图和投影变换处理后可最终显示到游戏窗口中（有兴趣的童鞋可以查阅相关文档资料）<br>
   
   下面是完整封装过后的自定义Sprite类
   -----------------------------
