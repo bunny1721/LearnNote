@@ -80,8 +80,9 @@ m_vertices = new float[9]
     int m_vertexBufferSize;
     int m_texBufferSize;
     unsigned int VAO ,VBO;
-  };
-    ```
+  };<br>
+  ```
+  
   
   MySprite.cpp文件：<br>
   ```c++
