@@ -177,6 +177,12 @@ m_vertices = new float[9]
   
   PS:因为cocos渲染是加入渲染队列之后统一循环渲染，因此我们要保证自定义精灵类可以加入cocos引擎渲染队列需要重载Node的draw函数，创建CustomCommand变量并添加至cocos渲染队列<br>
   
+  ```c++
+  MySprite* sp = MySprite::createWithFile("HelloWorld.png");
+  sp->setPosition(400, 320);
+  this->addChild(sp);
+  ```
+  通过代码调用创建自定义精灵
   最终输出结果如下图所示：
   -----------
   ![](https://github.com/bunny1721/LearnNote/blob/master/Cocos2d-XNote/res/image0.png)<br>
