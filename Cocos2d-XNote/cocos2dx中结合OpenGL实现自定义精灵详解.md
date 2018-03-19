@@ -43,12 +43,12 @@ GLProgram::SHADER_NAME_POSITION_TEXTURE是创建shader 里面包含Position以�
   绘制方法中进行绘制
   -------
   ```c++
-        getGLProgram()->use();
+	getGLProgram()->use();
 	glBindVertexArray(VAO);
 	getGLProgram()->setUniformsForBuiltins(transform);
 	GL::bindTexture2D(m_texture->getName());
 	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glBindVertexArray(0);
+	glBindVertexArray(0);      
   ```
   在上述代码中可以看到setUniformsForBuiltins(transform);这是cocos设置MVP变换<br>
   MVP即模型、视图和投影变换处理后可最终显示到游戏窗口中（有兴趣的童鞋可以查阅相关文档资料）<br>
