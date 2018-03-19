@@ -13,7 +13,7 @@ GLProgram::SHADER_NAME_POSITION_TEXTURE是创建shader 里面包含Position以�
 设置自定义顶点纹理坐标
 -----------
 ```c++
-m_vertices = new float[9] 
+  	m_vertices = new float[9] 
 	{
 		0.f, 0.f, 0.f,
 		_contentSize.width, 0.f, 0.f, 
@@ -43,7 +43,7 @@ m_vertices = new float[9]
   绘制方法中进行绘制
   -------
   ```c++
-  getGLProgram()->use();
+  	getGLProgram()->use();
 	glBindVertexArray(VAO);
 	getGLProgram()->setUniformsForBuiltins(transform);
 	GL::bindTexture2D(m_texture->getName());
@@ -184,6 +184,7 @@ m_vertices = new float[9]
   this->addChild(sp);
   ```
   通过代码调用创建自定义精灵
+  
   最终输出结果如下图所示：
   -----------
   ![](https://github.com/bunny1721/LearnNote/blob/master/Cocos2d-XNote/res/image0.png)<br>
