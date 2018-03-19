@@ -43,7 +43,7 @@ GLProgram::SHADER_NAME_POSITION_TEXTURE是创建shader 里面包含Position以�
   绘制方法中进行绘制
   -------
   ```c++
-  	getGLProgram()->use();
+        getGLProgram()->use();
 	glBindVertexArray(VAO);
 	getGLProgram()->setUniformsForBuiltins(transform);
 	GL::bindTexture2D(m_texture->getName());
